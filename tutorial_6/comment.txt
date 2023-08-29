@@ -1,0 +1,5 @@
+Python requires the '__init__.py' file for a directory
+to be considered as a 'package' by the Python interpreter.
+
+The current directory is not a package, just a container
+for scripts that are useful to explore the language features.
