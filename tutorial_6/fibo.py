@@ -15,3 +15,10 @@ def fib2(n):
 		a, b = b, a+b
 	return result
 
+
+# In order to execute this file as a script
+# it is necessary to check whether or not
+# it has been invoked with "__main__" name
+if __name__ == "__main__":
+	import sys
+	fib(int(sys.argv[1]))
