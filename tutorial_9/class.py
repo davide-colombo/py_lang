@@ -20,6 +20,8 @@ def main():
 	print(50 * '-')
 	print('main()')
 
+	print(50 * '-')
+	print('Instance object')
 	o1 = MyClass()
 	print('o1 = ', o1)
 	print('type(o1):', type(o1))
@@ -27,6 +29,12 @@ def main():
 	print('o1.i = ', o1.i)
 	print('o1.f = ', o1.f)
 
+	print(50 * '-')
+	print('Class Object')
+	print('MyClass = ', MyClass)
+	print('MyClass.i = ', MyClass.i)
+	print('MyClass.f = ', MyClass.f)
+	
 	print(50 * '-')
 	print('Demonstrating class with __init__() method')
 	o2 = MyClassWithInit()
