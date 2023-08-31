@@ -9,6 +9,12 @@ class MyClass:
 	def f(self):
 		return 'Hello, World!'
 
+class MyClassWithInit:
+	"""A class example with constructor"""
+
+	def __init__(self):
+		print('inside __init__()')
+		self.data = []
 
 def main():
 	print(50 * '-')
@@ -20,6 +26,10 @@ def main():
 
 	print('o1.i = ', o1.i)
 	print('o1.f = ', o1.f)
+
+	print(50 * '-')
+	print('Demonstrating class with __init__() method')
+	o2 = MyClassWithInit()
 
 if __name__ == '__main__':
 	main()
