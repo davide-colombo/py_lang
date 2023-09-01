@@ -79,6 +79,19 @@ def main():
 	print(f'"ab*?" search {s4!r} start: ', m2_s4.start())
 	print(f'"ab*?" search {s4!r} end: ', m2_s4.end())
 	print(f'"ab*?" search {s4!r} group: ', m2_s4.group())
+
+	print(50 * '-')
+	print('Demonstrate findall(): "ab*?" on %s' % s4)
+
+	all2_s4 = p2.findall(s4)
+	print(all2_s4)
+	
+	print(50 * '-')
+	print(F'Demonstrate finditer(): "ab*?" on {s4!r}')
+
+	iter2_s4 = p2.finditer(s4)
+	for match in iter2_s4:
+		print(match)
 	
 if __name__ == '__main__':
 	main()
