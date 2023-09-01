@@ -55,7 +55,27 @@ def main():
 	snp = 4350		# location of a Single Nucleotide Polymorphism of interest
 	for feature in record.features:
 		if snp in feature:
-			print("%s %s" % (feature.type, feature.qualifiers.get("db_xref")))
+			print(50 * '*')
+			print('INSIDE')
+			t = feature.type
+			if t == 'CDS':
+				print('product: ', feature.qualifiers["product"][0])
+				print('protein identifier: ', feature.qualifiers["protein_id"][0])
+			elif t == "gene":
+				print(f'gene location(sense) = {feature.location}')
+			elif t == 'source':
+				print(feature.qualifiers["biovar"])
+			else:
+				print("No interesting feature")
+
+			print()
+			print(50 * '^')
+			print('FULL FEATURE')
+			print(feature)
+			print(50 * '^')
+			print()
+
+#			print("%s %s" % (feature.type, feature.qualifiers.get("db_xref")))
 
 if __name__ == '__main__':
 	main()
