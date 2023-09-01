@@ -3,7 +3,9 @@
 
 import sys
 import re
+
 from Bio.Seq import Seq
+from Bio.SeqUtils import gc_fraction
 
 # ============================================================================
 def isvalidnaseq(dnaseq:str) -> bool:
@@ -27,6 +29,10 @@ def my_revcomplement(dnaseq:str) -> str:
 	"""Takes a 5'-3' oriented DNA sequence and returns the reverse complement"""
 
 	return my_complement(dnaseq)[::-1]
+
+# ============================================================================
+def gcfraction(seq: Seq) -> float:
+	return (seq.count("G") + seq.count("C")) / len(seq)
 
 # ============================================================================
 def main():
@@ -76,7 +82,62 @@ def main():
 	print(myreverse)
 
 	assert myreverse == reverse
+
+	print(50 * '-')
+	print(f"length of my sequence = {len(mysequence)}")
+	print(f"count of 'CG' occurrences in my sequence = {mysequence.count('CG')}")
+
+	print()
+	print(50 * '=')
+	print()
+
+	print('Working on another sequence')
+	dnaseq = "GATCGATGGGCCTATATAGGATCGAAAATCGC"
+	print(dnaseq)
+
+	seq = Seq(dnaseq)
+	print(50 * '-')
+	print('Count the GC content without BIOPYTHON')
+	gc_my = gcfraction(seq)
+	print(f"My 'GC' fraction = {gc_my:.3f}")
+
+	print(50 * '-')
+	print('Count GC content BIOPYTHON')
+	gc_bio = gc_fraction(seq)
+	print(f"BIOPYTHON's 'GC' fraction = {gc_bio:.3f}")
+
+	# NOTE: values are float!!
+	assert gc_my == gc_bio
+
+	print(50 * '-')
+	print('Inspecting frame starting at first nucleotide')
+	print(seq[0::3])
+
+	print(50 * '-')
+	print('Inspecting frame starting at second nucleotide')
+	print(seq[1::3])
+
+	print(50 * '-')
+	print('Inspecting frame starting at third nucleotide')
+	print(seq[2::3])
+
+	print(50 * '-')
+	prot = Seq("EVRNAK")
 	
+	assert isvalidnaseq(str(prot)) == False
+
+	# NOTE: biopython does not generate ERROR!!
+	tmpseq = dnaseq + prot
+
+	assert isvalidnaseq(str(tmpseq)) == False
 	
+	print(50 * '-')
+	print('Simple concatenation example')
+	contigs = [Seq("ATG"), Seq("ATCCCG"), Seq("TTGCA")]
+	spacer = Seq("N" * 10)
+	outseq = spacer.join(contigs)
+	print(f'spacer.join(contigs)')
+	print(outseq)	
+
 if __name__ == '__main__':
 	main()
