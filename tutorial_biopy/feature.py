@@ -2,6 +2,7 @@
 # Feature, location, position objects
 
 from Bio import SeqFeature
+from Bio import SeqIO
 
 def main():
 
@@ -19,6 +20,34 @@ def main():
 	print('Location')
 	location = SeqFeature.SimpleLocation(start_pos, end_pos)
 	print(location)
+
+	print(50 * '-')
+	print('Load a GenBank file')
+	record = SeqIO.read('io/yersinia_pestis.gb', "genbank")
+
+	print(50 * '-')
+	print('Inspecting the record')
+	print(record.name)
+
+	print(50 * '-')
+	print('Record ID')
+	print(record.id)
+
+	print(50 * '-')
+	print('Record\'s description')
+	print(record.description)
+
+	print(50 * '-')
+	print('Source')
+	print(record.annotations['source'])
+
+	print(50 * '-')
+	print('Database Cross References')
+	print(record.dbxrefs)
+
+	print(50 * '-')
+	print('Number of features')
+	print(len(record.features))
 
 if __name__ == '__main__':
 	main()
