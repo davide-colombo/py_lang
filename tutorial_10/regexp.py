@@ -92,6 +92,28 @@ def main():
 	iter2_s4 = p2.finditer(s4)
 	for match in iter2_s4:
 		print(match)
+
+	print(50 * '-')
+	print('Try to inspect the behavior when multiple patterns are available')
 	
+	mystring = '@@abcd!!'
+	mypattern = re.compile(r'\w\w\w')
+	myall = mypattern.findall(mystring)
+	if not myall:
+		print(f'Pattern {mypattern!r} does not match anything in {mystring!r}')
+	for match in myall:
+		print(match)
+
+	print(50 * '-')
+	print('Demonstrate lookahead assertion')
+
+	mypattern = re.compile(r'(?=(\w{3}))')
+	myall = mypattern.findall(mystring)
+	if not myall:
+		print(f'Pattern {mypattern!r} does not match anything in {mystring!r}')
+	for match in myall:
+		print(match)
+
+
 if __name__ == '__main__':
 	main()
