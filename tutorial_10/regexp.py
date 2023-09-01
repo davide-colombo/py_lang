@@ -71,7 +71,14 @@ def main():
 	print(f'"ab*?" search {s3!r}: ', p2.search(s3))
 	print(f'"ab*?" search {s4!r}: ', p2.search(s4))
 
-	
+	print(50 * '-')
+	print('Inspect the <match> object')
 
+	m2_s4 = p2.search(s4)
+	print(f'"ab*?" search {s4!r} span: ', m2_s4.span())
+	print(f'"ab*?" search {s4!r} start: ', m2_s4.start())
+	print(f'"ab*?" search {s4!r} end: ', m2_s4.end())
+	print(f'"ab*?" search {s4!r} group: ', m2_s4.group())
+	
 if __name__ == '__main__':
 	main()
