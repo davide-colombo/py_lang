@@ -45,6 +45,7 @@ def main():
 	s1 = 'ab'
 	s2 = 'abbbbb'
 	s3 = 'abbba'
+	s4 = 'best of abba'
 
 	print(f'"ab*" match {s!r}: ', p1.match(s))
 	print(f'"ab*" match {s1!r}: ', p1.match(s1))
@@ -54,10 +55,21 @@ def main():
 	print(50 * '-')
 	print('Demonstrate non-greedy match')
 	p2 = re.compile(r'ab*?')
+
 	print(f'"ab*?" match {s!r}: ', p2.match(s))
 	print(f'"ab*?" match {s1!r}: ', p2.match(s1))
 	print(f'"ab*?" match {s2!r}: ', p2.match(s2))
 	print(f'"ab*?" match {s3!r}: ', p2.match(s3))
+	print(f'"ab*?" match {s4!r}: ', p2.match(s4))
+
+	print(50 * '-')
+	print('Demonstrate how to use the search() method')
+
+	print(f'"ab*?" search {s!r}: ', p2.search(s))
+	print(f'"ab*?" search {s1!r}: ', p2.search(s1))
+	print(f'"ab*?" search {s2!r}: ', p2.search(s2))
+	print(f'"ab*?" search {s3!r}: ', p2.search(s3))
+	print(f'"ab*?" search {s4!r}: ', p2.search(s4))
 
 	
 
