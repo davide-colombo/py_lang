@@ -49,5 +49,13 @@ def main():
 	print('Number of features')
 	print(len(record.features))
 
+	print(50 * '-')
+	print('Demonstrate usange of "in" keyword with SeqFeature objects')
+
+	snp = 4350		# location of a Single Nucleotide Polymorphism of interest
+	for feature in record.features:
+		if snp in feature:
+			print("%s %s" % (feature.type, feature.qualifiers.get("db_xref")))
+
 if __name__ == '__main__':
 	main()
