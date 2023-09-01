@@ -25,8 +25,41 @@
 # =======================================================================
 # -end-
 
+import re
+
 def main():
 	"""A collection of examples on 'how to use' regular expressions"""
+
+	print(50 * '-')
+	print('main()')
+
+	print(50 * '-')
+	print('Test a simple pattern: "ab*"')
+	p1 = re.compile(r'ab*')
+	print(p1)
+
+	print(50 * '-')
+	print('Test a simple match on "ab*" pattern')
+
+	s = "a"
+	s1 = 'ab'
+	s2 = 'abbbbb'
+	s3 = 'abbba'
+
+	print(f'"ab*" match {s!r}: ', p1.match(s))
+	print(f'"ab*" match {s1!r}: ', p1.match(s1))
+	print(f'"ab*" match {s2!r}: ', p1.match(s2))
+	print(f'"ab*" match {s3!r}: ', p1.match(s3))
+
+	print(50 * '-')
+	print('Demonstrate non-greedy match')
+	p2 = re.compile(r'ab*?')
+	print(f'"ab*?" match {s!r}: ', p2.match(s))
+	print(f'"ab*?" match {s1!r}: ', p2.match(s1))
+	print(f'"ab*?" match {s2!r}: ', p2.match(s2))
+	print(f'"ab*?" match {s3!r}: ', p2.match(s3))
+
+	
 
 if __name__ == '__main__':
 	main()
