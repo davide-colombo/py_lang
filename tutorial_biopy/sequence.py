@@ -16,9 +16,17 @@ def isvalidnaseq(dnaseq:str) -> bool:
 COMPLEMENT_DICTIONARY = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
 
 def my_complement(dnaseq: str):
+	"""Takes a 5'-3' oriented DNA sequence and returns the complement"""
+
 	if not isvalidnaseq(dnaseq):
 		raise ValueError('"%s" is not a valid DNA sequence' % dnaseq)
 	return "".join([COMPLEMENT_DICTIONARY[n] for n in dnaseq])
+
+# ============================================================================
+def my_revcomplement(dnaseq:str) -> str:
+	"""Takes a 5'-3' oriented DNA sequence and returns the reverse complement"""
+
+	return my_complement(dnaseq)[::-1]
 
 # ============================================================================
 def main():
@@ -51,14 +59,24 @@ def main():
 	print(complement)
 
 	print(50 * '-')
-	print('Complement of {dnaseq} using my_complement()')
-	complement = my_complement(dnaseq)
+	print(f'Complement of {dnaseq} using my_complement()')
+	mycomplement = my_complement(dnaseq)
 	print(complement)
+
+	assert mycomplement == complement
 
 	print(50 * '-')
 	print(f'Get the reverse complement of {mysequence!r}')
 	reverse = mysequence.reverse_complement()
 	print(reverse)
+
+	print(50 * '-')
+	print(f'Reverse complement of {dnaseq} using my_revcomplement()')
+	myreverse = my_revcomplement(dnaseq)
+	print(myreverse)
+
+	assert myreverse == reverse
+	
 	
 if __name__ == '__main__':
 	main()
